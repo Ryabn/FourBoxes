@@ -1,13 +1,12 @@
 
 body{
-    margin: 0px;
+    margin: 100px 0px 0px 0px;
     background-color: aliceblue;
 }
 .bttnTraits{
     height: 40vh;
     width: 100%;
-}
-.bttnGeneral{
+    background-color:cyan;
     margin-bottom: 20px;
 }
 #btn1{
