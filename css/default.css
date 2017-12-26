@@ -1,0 +1,20 @@
+body{
+    background-color: #380099;
+}
+.button{
+    width: 100%;
+    height: 300px;
+    margin-top: 25px;
+}
+#one{
+    background-color: #98f98b;
+}
+#two{
+    background-color: #ffebaa;
+}
+#three{
+    background-color: #c252f2;
+}
+#four{
+    background-color: #6782bc;
+}
