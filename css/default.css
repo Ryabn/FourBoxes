@@ -1,12 +1,22 @@
 body{
     background-color: white;
 }
-.button{
+.buttonSize{
     border-radius: 5px;
     box-shadow: 10px 10px;
     width: 100%;
     height: 300px;
     margin-top: 25px;
+}
+.spacer{
+    margin-top: 25px;
+}
+.startButton{
+    height: 100px;
+    width: 80%;
+}
+.startText{
+    
 }
 #one{
     background-color: #98f98b;
