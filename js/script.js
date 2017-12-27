@@ -1,7 +1,6 @@
 var userInput;
-
+var userLevel;
 var iRoundIndex = 0;
-
 //game buttons
 var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
@@ -9,6 +8,7 @@ var gameButtonsIdLen = gameButtonsId.length;
 //disable buttons on load
 function load(){
     disableGameButtons();
+    userLevel = 1;
 }
 function disableGameButtons(){
     for(iLoopVar = 0; iLoopVar <= gameButtonsIdLen; iLoopVar++){
@@ -20,16 +20,25 @@ function enableGameButtons(){
         document.getElementById(gameButtonsId[iLoopVar]).disabled = false;
     }
 }
+function animationTime(arrayLength){
+    var iAnimationTime;
+    if(arrayLength >= 10){
+        iAnimationTime = 200;
+    }else{
+        iAnimationTime = (Math.log10(arrayLength + 10)*(-1) + 1.5) * 1000;
+    }
+    return iAnimationTime;
+}
 function chainAnimations(iGeneratedArray){
     var sArrayId = [];
     sArrayId = translateNumToId(iGeneratedArray);
+    var iAnimationTime = animationTime(sArrayId.length);
     var iAnimationIndex = 0;
-    
     function displayButton(iAnimationIndex){
         document.getElementById(sArrayId[iAnimationIndex]).style.boxShadow = "0 0 10px red";
         setTimeout(function(){
             stopButton(iAnimationIndex);
-        }, 1000);
+        }, iAnimationTime);
     }
     function stopButton(iAnimationIndex){
         document.getElementById(sArrayId[iAnimationIndex]).style.boxShadow = "none";
@@ -38,7 +47,7 @@ function chainAnimations(iGeneratedArray){
             if(iAnimationIndex < sArrayId.length){
                 displayButton(iAnimationIndex);
             }
-        }, 500);
+        }, 100);
         
     }
     displayButton(iAnimationIndex);
@@ -65,13 +74,14 @@ function translateNumToId(iGeneratedArray){
     return sArrayId;
 }
 function test(){
-    chainAnimations(iGenerateSequence(3));
+    
 }
 function startButton(){
     
     document.getElementById("startButton").disabled = true;
     
     var iGeneratedArray =[];
+    //based on level
     iGeneratedArray = iGenerateSequence(3);
     chainAnimations(iGeneratedArray);
     enableGameButtons();
@@ -90,12 +100,16 @@ function startButton(){
     document.getElementById("Button").disabled = false;
     disableGameButtons();
 }
-//retrieves user input
 function uInput(number){
     userInput = number;
-    alert(number);
 }
 //given array and number of indexes returns a randomized array of that length
+function setNumberOfIndexes(userLevel){
+    var numInSequence = 1;
+    
+    
+    return numInSequence;
+}
 function iGenerateSequence(iArrElements){
 	GeneratedArray = [];
 	for(loopVar = 0; loopVar < iArrElements; loopVar++){
