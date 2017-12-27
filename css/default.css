@@ -10,13 +10,22 @@ body{
 .spacer{
     margin-top: 25px;
 }
-#startButton{
-    height: 100px;
-    width: 80%;
-    text-align: center;
-}
 .startText{
     
+}
+.options{
+    height: 100px;
+    width: 100%;
+    text-align: center;
+}
+#startButton{
+
+}
+#level{
+    text-align: center;
+}
+#score{
+    text-align: center;
 }
 #one{
     background-color: #98f98b;

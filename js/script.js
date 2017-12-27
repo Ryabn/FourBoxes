@@ -1,11 +1,17 @@
 var userInput;
 var iRoundIndex = 0;
-var userLevel;
+var userLevel = 0;
+var userScore = 0;
+var iGeneratedArray = [];
 var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
 function load(){
+    updateScores();
     disableGameButtons();
-    userLevel = 0;
+}
+function updateScores(){
+    document.getElementById('level').innerHTML = "Level: " + (userLevel + 1);
+    document.getElementById('score').innerHTML = "Score: " + userScore;
 }
 function disableGameButtons(){
     for(iLoopVar = 0; iLoopVar <= gameButtonsIdLen; iLoopVar++){
@@ -72,44 +78,52 @@ function translateNumToId(iGeneratedArray){
     return sArrayId;
 }
 function test(){
-    
+    updateScores();
 }
 function startButton(){
-    var iGeneratedArray =[];
+    iGeneratedArray = [];
     document.getElementById("startButton").disabled = true;
-    iGeneratedArray = iGenerateSequence(4);
-    
+    iGeneratedArray = iGenerateSequence(setNumberOfIndexes());
     chainAnimations(iGeneratedArray);
-
-
-
 }
-function startOfRound(){
-    //take user input
-        //check user input
-    //if correct
-        //update score
-        //reset round
-    //else
-        //generate new game function
-        //reset score
-        //future functionality
-            //scoreboard
-            //highest
-            //time taken
-            //pizzazz
-}
+//take user input
+    //check user input
+//if correct
+    //update score
+    //reset round
+//else
+    //generate new game function
+    //reset score
+    //future functionality
+        //scoreboard
+        //highest
+        //time taken
+        //pizzazz
+//work on this at end
+//also clear all variables
 function endOfRound(){
     document.getElementById("startButton").disabled = false;
+    iRoundIndex = 0;
     disableGameButtons();
 }
-function uInput(number){
-    userInput = number;
+function roundPass(){
+    userLevel++;
+    userScore++;
+    endOfRound();
 }
-function setNumberOfIndexes(userLevel){
+function roundFail(){
+    iRoundIndex = 0;
+    userLevel = 0;
+    userScore = 0;
+    updateScores();
+    endOfRound();
+}
+function uInput(number){
+    checkInput((number-1));
+}
+function setNumberOfIndexes(){
     var numInSequence;
     numInSequence = Math.floor((8*(Math.log10((0.5 * userLevel) + 2))) + 1);
-    
     return numInSequence;
 }
 function iGenerateSequence(iArrElements){
@@ -120,20 +134,32 @@ function iGenerateSequence(iArrElements){
 	}
 	return GeneratedArray;
 }
-/*
-//assume it's start of a round
-function checkInput(){
-    var arrLen = (iGeneratedArray.length - 1);
-    
-    if(bCorrect(userInput, iGeneratedArray[iRoundIndex])){
-        if(iRoundIndex < arrLen){
-            
-        }else if(iRoundIndex = arrLen){
-            
+function checkInput(userInputNum){
+    if(userInputNum === iGeneratedArray[iRoundIndex]){
+        userScore++;
+        iRoundIndex++;
+        updateScores();
+        if(iRoundIndex >= iGeneratedArray.length){
+            roundPass();
         }
+    }else{
+        roundFail();
     }
-}
-*/
-function bCorrect(iUserInput, iGenerated){
-	return (iUserInput === iGenerated);
+    
+    
+    
+    
+    /*
+    if(userInputNum === iGeneratedArray[iRoundIndex])){
+        userScore++;
+        if(iRoundIndex >= iGeneratedArray.length){
+            userScore++;
+        }else{
+            roundPass();
+        }
+    }else{
+        roundFail();
+    }
+    iRoundIndex++;
+    */
 }
