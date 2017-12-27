@@ -1,14 +1,11 @@
 var userInput;
-var userLevel;
 var iRoundIndex = 0;
-//game buttons
+var userLevel;
 var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
-
-//disable buttons on load
 function load(){
     disableGameButtons();
-    userLevel = 1;
+    userLevel = 0;
 }
 function disableGameButtons(){
     for(iLoopVar = 0; iLoopVar <= gameButtonsIdLen; iLoopVar++){
@@ -46,13 +43,14 @@ function chainAnimations(iGeneratedArray){
             iAnimationIndex++;
             if(iAnimationIndex < sArrayId.length){
                 displayButton(iAnimationIndex);
+            }else{
+                enableGameButtons();
             }
         }, 100);
         
     }
     displayButton(iAnimationIndex);
 }
-//generates array of id's based on generated array
 function translateNumToId(iGeneratedArray){
     var sArrayId = [];
     for(iLoopVar = 0; iLoopVar < iGeneratedArray.length; iLoopVar++){
@@ -77,36 +75,40 @@ function test(){
     
 }
 function startButton(){
-    
-    document.getElementById("startButton").disabled = true;
-    
     var iGeneratedArray =[];
-    //based on level
-    iGeneratedArray = iGenerateSequence(3);
+    document.getElementById("startButton").disabled = true;
+    iGeneratedArray = iGenerateSequence(4);
+    
     chainAnimations(iGeneratedArray);
-    enableGameButtons();
+
+
+
+}
+function startOfRound(){
     //take user input
         //check user input
     //if correct
         //update score
         //reset round
     //else
+        //generate new game function
         //reset score
         //future functionality
             //scoreboard
             //highest
             //time taken
             //pizzazz
-    document.getElementById("Button").disabled = false;
+}
+function endOfRound(){
+    document.getElementById("startButton").disabled = false;
     disableGameButtons();
 }
 function uInput(number){
     userInput = number;
 }
-//given array and number of indexes returns a randomized array of that length
 function setNumberOfIndexes(userLevel){
-    var numInSequence = 1;
-    
+    var numInSequence;
+    numInSequence = Math.floor((8*(Math.log10((0.5 * userLevel) + 2))) + 1);
     
     return numInSequence;
 }
