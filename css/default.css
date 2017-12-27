@@ -1,25 +1,61 @@
 body{
+    font-family: 'Roboto Mono', monospace;
     background-color: white;
+}
+h1{
+    height: 7vh;
+    margin: 1vh;
+    font-size: 7vh;
+    text-align: center;
+}
+p{
+    font-family: 'Roboto Mono', monospace;
 }
 .buttonSize{
     border-radius: 5px;
     width: 100%;
-    height: 300px;
-    margin-top: 25px;
+    height: 100%;
+}
+.setSize{
+    margin: 1vh;
+    height: 30vh;
+}
+.setSmallSize{
+    padding: 1vh;
 }
 .spacer{
-    margin-top: 25px;
+    margin-top: 2vh;
+}
+.controlBtns{
+    border-radius: 5px;
+    border: none;
+    height: 10vh;
+    width: 100%;
+}
+.settings{
+    background-color: #76C2AE;
+}
+.play{
+    background-color: #CE585D;
 }
 .startText{
-    
+    font-size: 6vh;
 }
-.options{
-    height: 100px;
-    width: 100%;
-    text-align: center;
+.playIcon{
+    background-image: url(../images/playButton2.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.settingsIcon{
+    background-image: url(../images/settingsButton2.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
 }
 #startButton{
-
 }
 #level{
     text-align: center;

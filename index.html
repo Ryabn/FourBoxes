@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <title>
-            Order Me Right
+            Four Boxes
         </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <script
@@ -15,62 +15,72 @@
 			  crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="css/default.css">
         <script src="js/script.js"></script>
     </head>
     <body onload="load()">
         <div class="container">
             <div class="row">
+                <div class="col-12">
+                    <h1>
+                        Four Boxes
+                    </h1>
+                </div>
+            </div>
+            <div class="row no-gutters">
                 <div class="col-6">
-                    <div class="buttonOne">
-                        <button class="button buttonSize button-raised" id="one" onclick="uInput(1)">
+                    <div class="setSize">
+                        <button class="button button-raised buttonSize" id="one" onclick="uInput(1)">
                         </button>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="buttonTwo">
-                        <button class="button buttonSize button-raised" id="two" onclick="uInput(2)">
+                    <div class="setSize">
+                        <button class="button button-raised buttonSize" id="two" onclick="uInput(2)">
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row no-gutters">
                 <div class="col-6">
-                    <div class="buttonThree">
-                        <button class="button buttonSize button-raised" id="three" onclick="uInput(3)">
+                    <div class="setSize">
+                        <button class="button button-raised buttonSize" id="three" onclick="uInput(3)">
                         </button>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="buttonFour">
-                        <button class="button buttonSize button-raised" id="four" onclick="uInput(4)">
+                    <div class="setSize">
+                        <button class="button button-raised buttonSize" id="four" onclick="uInput(4)">
                         </button>
                     </div> 
                 </div>
             </div>
             <div class="spacer"></div>
-            <div class="row">
-                <div class="col-3">
-                    <div>
+            <div class="row no-gutters">
+                <div class="col-5 mx-auto col-lg-3">
+                    <div class="setSmallSize">
                         <p id="level"></p>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div>
+                <div class="col-5 mx-auto col-lg-3">
+                    <div class="setSmallSize">
                         <p id="score"></p>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div>
-                        <button id="startButton" class="options button button-glow" onclick="startButton()">
-                            <p class="startText">Start</p>
+                <div class="col-5 mx-auto col-lg-3">
+                    <div class="setSmallSize">
+                        <button id="startButton" class="controlBtns play" onclick="startButton()">
+                            <div class="playIcon">
+                            </div>
                         </button>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div id="options">
-                        <button class="options button" onclick="test()">
-                            <p class="startText">Test</p>
+                <div class="col-5 mx-auto col-lg-3">
+                    <div class="setSmallSize">
+                        <button class="controlBtns settings" onclick="optionButton()">
+                            <div class="settingsIcon">
+                            </div>
                         </button>
                     </div>
                 </div>
