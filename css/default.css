@@ -1,15 +1,12 @@
 body{
     font-family: 'Roboto Mono', monospace;
     background-color: white;
-}
-h1{
-    height: 7vh;
-    margin: 1vh;
-    font-size: 7vh;
     text-align: center;
 }
-p{
-    font-family: 'Roboto Mono', monospace;
+h1{
+    height: 6vh;
+    margin: 1vh;
+    font-size: 6vh;
 }
 .buttonSize{
     border-radius: 5px;
@@ -26,20 +23,35 @@ p{
 .spacer{
     margin-top: 2vh;
 }
+.display{
+    background-color: #ededed;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 grey;
+    padding-top: 3vh;
+    height: 10vh;
+}
 .controlBtns{
     border-radius: 5px;
+    box-shadow: 5px 5px 0 grey;
     border: none;
     height: 10vh;
     width: 100%;
+}
+.controlBtns:hover{
+    box-shadow: 0 0 5px cyan, 5px 5px 0 grey;
+}
+.controlBtns:disabled{
+    
+}
+.controlBtns:active{
+    transform: translate(5px, 5px);
+    box-shadow:  0 0 5px cyan, 0 0 0 grey;
 }
 .settings{
     background-color: #76C2AE;
 }
 .play{
-    background-color: #CE585D;
-}
-.startText{
-    font-size: 6vh;
+    background-color: #C85C5C;
 }
 .playIcon{
     background-image: url(../images/playButton2.png);
@@ -55,13 +67,29 @@ p{
     background-repeat: no-repeat;
     height: 100%;
 }
-#startButton{
+.github{
+    display: none;
 }
-#level{
-    text-align: center;
+#wrapper{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,255,0.3);
+    height: 100vh;
+    width: 100vw;
 }
-#score{
-    text-align: center;
+#optionsPage{
+    position: fixed;
+    width: 300px;
+    height: 60vh;
+    top: 15vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 10px;
+    border: 5px solid grey;
+
 }
 #one{
     background-color: #98f98b;
@@ -74,4 +102,24 @@ p{
 }
 #four{
     background-color: #6782bc;
+}
+@media screen and (min-width: 768px) {
+    .display{
+        padding-top: 2vh;
+        font-size: 28px;
+    }
+}
+@media screen and (min-width: 992px) {
+    h1{
+        height: 7vh;
+        margin: 1vh;
+        font-size: 7vh;
+    }
+    .github{
+        display: inline;
+    }
+    .display{
+        padding-top: 2vh;
+        font-size: 32px;
+    }
 }

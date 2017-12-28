@@ -88,12 +88,12 @@ function updateScores(){
     document.getElementById('score').innerHTML = "Score: " + userScore;
 }
 function disableGameButtons(){
-    for(iLoopVar = 0; iLoopVar <= gameButtonsIdLen; iLoopVar++){
+    for(iLoopVar = 0; iLoopVar < gameButtonsIdLen; iLoopVar++){
         document.getElementById(gameButtonsId[iLoopVar]).disabled = true;
     }
 }
 function enableGameButtons(){
-    for(iLoopVar = 0; iLoopVar <= gameButtonsIdLen; iLoopVar++){
+    for(iLoopVar = 0; iLoopVar < gameButtonsIdLen; iLoopVar++){
         document.getElementById(gameButtonsId[iLoopVar]).disabled = false;
     }
 }
@@ -117,15 +117,30 @@ function roundFail(){
 function uInput(number){
     checkInput((number-1));
 }
+function lightUpCorrect(divId){
+    document.getElementById(divId).style.textShadow = "0 0 10px green";
+    setTimeout(function(){ 
+        document.getElementById(divId).style.textShadow = "none";
+    }, 300);
+}
 function checkInput(userInputNum){
     if(userInputNum === iGeneratedArray[iRoundIndex]){
         userScore++;
         iRoundIndex++;
         updateScores();
+        lightUpCorrect('score');
+        
         if(iRoundIndex >= iGeneratedArray.length){
             roundPass();
+            
         }
     }else{
         roundFail();
     }
+}
+function openOptions(){
+    document.getElementById('wrapper').style.display = 'inline';
+}
+function closeOptions(){
+    document.getElementById('wrapper').style.display = 'none';
 }
