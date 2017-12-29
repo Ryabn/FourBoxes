@@ -77,6 +77,7 @@ function chainAnimations(iGeneratedArray){
                 displayButton(iAnimationIndex);
             }else{
                 enableGameButtons();
+                indicatorUpdate();
             }
         }, 100);
         
@@ -84,8 +85,9 @@ function chainAnimations(iGeneratedArray){
     displayButton(iAnimationIndex);
 }
 function updateScores(){
-    document.getElementById('level').innerHTML = "Level: " + (userLevel + 1);
-    document.getElementById('score').innerHTML = "Score: " + userScore;
+    document.getElementById('level').innerHTML = "Level:" + (userLevel + 1);
+    document.getElementById('score').innerHTML = "Score:" + userScore;
+    indicatorUpdate();
 }
 function disableGameButtons(){
     for(iLoopVar = 0; iLoopVar < gameButtonsIdLen; iLoopVar++){
@@ -108,19 +110,25 @@ function roundPass(){
     endOfRound();
 }
 function roundFail(){
+    var indicatorId = document.getElementById('displayLeft');
     iRoundIndex = 0;
     userLevel = 0;
     userScore = 0;
     updateScores();
+    document.getElementById('indicator').innerHTML = "Failed!";
+    indicatorId.style.backgroundColor = "#d8002e";
+    setTimeout(function(){ 
+        indicatorId.style.backgroundColor = "#ededed";
+    }, 300);
     endOfRound();
 }
 function uInput(number){
     checkInput((number-1));
 }
 function lightUpCorrect(divId){
-    document.getElementById(divId).style.textShadow = "0 0 10px green";
+    document.getElementById(divId).style.backgroundColor = "#5aff30";
     setTimeout(function(){ 
-        document.getElementById(divId).style.textShadow = "none";
+        document.getElementById(divId).style.backgroundColor = "#ededed";
     }, 300);
 }
 function checkInput(userInputNum){
@@ -128,19 +136,29 @@ function checkInput(userInputNum){
         userScore++;
         iRoundIndex++;
         updateScores();
-        lightUpCorrect('score');
+        lightUpCorrect('displayLeft');
         
         if(iRoundIndex >= iGeneratedArray.length){
-            roundPass();
-            
+            roundPass(); 
         }
     }else{
         roundFail();
     }
 }
+function indicatorUpdate(){
+    var boxesLeft = iGeneratedArray.length - iRoundIndex;
+    if(boxesLeft === 0){
+        document.getElementById('indicator').innerHTML = "Next Level:";
+    }else{
+        document.getElementById('indicator').innerHTML = "Boxes:" + (boxesLeft);
+    }
+}
 function openOptions(){
-    document.getElementById('wrapper').style.display = 'inline';
+    document.getElementById('wrapper').style.visibility = 'visible';
 }
 function closeOptions(){
-    document.getElementById('wrapper').style.display = 'none';
+    document.getElementById('wrapper').style.visibility = 'hidden';
+}
+function setDarkMode(){
+    Cookies.set('name', 'value', { expires: 7 });
 }

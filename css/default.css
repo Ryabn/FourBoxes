@@ -8,6 +8,9 @@ h1{
     margin: 1vh;
     font-size: 6vh;
 }
+a{
+    color: red;
+}
 .buttonSize{
     border-radius: 5px;
     width: 100%;
@@ -15,7 +18,7 @@ h1{
 }
 .setSize{
     margin: 1vh;
-    height: 30vh;
+    height: 28vh;
 }
 .setSmallSize{
     padding: 1vh;
@@ -41,7 +44,8 @@ h1{
     box-shadow: 0 0 5px cyan, 5px 5px 0 grey;
 }
 .controlBtns:disabled{
-    
+    transform: translate(5px, 5px);
+    box-shadow:  0 0 5px cyan, 0 0 0 grey;
 }
 .controlBtns:active{
     transform: translate(5px, 5px);
@@ -71,7 +75,7 @@ h1{
     display: none;
 }
 #wrapper{
-    display: none;
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
@@ -86,19 +90,21 @@ h1{
     top: 15vh;
     left: 50vw;
     transform: translateX(-50%);
+    overflow: auto;
     background-color: white;
     border-radius: 10px;
     border: 5px solid grey;
+    padding: 20px;
 
 }
 #one{
-    background-color: #98f98b;
+    background-color: #6782bc;
 }
 #two{
-    background-color: #ffebaa;
+    background-color: #6782bc;
 }
 #three{
-    background-color: #c252f2;
+    background-color: #6782bc;
 }
 #four{
     background-color: #6782bc;
@@ -114,6 +120,9 @@ h1{
         height: 7vh;
         margin: 1vh;
         font-size: 7vh;
+    }
+    .setSize{
+        height: 30vh;
     }
     .github{
         display: inline;
