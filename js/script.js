@@ -7,8 +7,9 @@ var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
 
 function load(){
+    loadSettings();
     updateScores();
-    disableGameButtons();
+    disableGameButtons();   
 }
 function startButton(){
     iGeneratedArray = [];
@@ -155,10 +156,30 @@ function indicatorUpdate(){
 }
 function openOptions(){
     document.getElementById('wrapper').style.visibility = 'visible';
+    setDarkMode();
 }
 function closeOptions(){
     document.getElementById('wrapper').style.visibility = 'hidden';
 }
-function setDarkMode(){
-    Cookies.set('name', 'value', { expires: 7 });
+function setDarkMode(){ 
+    if(Cookies.get('darkMode') === '1'){
+        document.getElementById('darkMode').checked = true;
+        document.body.style.backgroundColor = "black";
+        document.getElementsByTagName("h1")[0].style.color = "white";
+    }else{
+        document.getElementById('darkMode').checked = false;
+        document.body.style.backgroundColor = "white"; 
+        document.getElementsByTagName("h1")[0].style.color = "black";
+    }
+}
+function darkModeClick(){
+    if(document.getElementById('darkMode').checked) {
+        Cookies.set('darkMode', '1', { expires: 7 });
+    }else{
+        Cookies.set('darkMode', '0', { expires: 7 });
+    }
+    setDarkMode();
+}
+function loadSettings(){
+    setDarkMode();
 }
