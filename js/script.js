@@ -216,5 +216,6 @@ function firstTimeLoad(){
         Cookies.set('darkMode', '0', { expires: 7 });
         Cookies.set('soundMode', '1', { expires: 7 });
         Cookies.set('loadedBefore', '1', { expires: 7 });
+        loadSettings();
     }
 }
