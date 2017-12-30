@@ -7,7 +7,7 @@ var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
 
 function load(){
-    loadSettings();
+    firstTimeLoad();
     updateScores();
     disableGameButtons();   
 }
@@ -53,7 +53,7 @@ function translateNumToId(iGeneratedArray){
 function animationTime(arrayLength){
     var iAnimationTime;
     if(arrayLength >= 10){
-        iAnimationTime = 200;
+        iAnimationTime = 220;
     }else{
         iAnimationTime = (Math.log10(arrayLength + 10)*(-1) + 1.5) * 1000;
     }
@@ -64,8 +64,14 @@ function chainAnimations(iGeneratedArray){
     sArrayId = translateNumToId(iGeneratedArray);
     var iAnimationTime = animationTime(sArrayId.length);
     var iAnimationIndex = 0;
+    if(document.getElementById('soundEnable').checked){
+        var playSound = true;
+    }else{
+        var playSound = false;
+    }
     function displayButton(iAnimationIndex){
         document.getElementById(sArrayId[iAnimationIndex]).style.boxShadow = "0 0 10px red";
+        playNote(sArrayId[iAnimationIndex], playSound);
         setTimeout(function(){
             stopButton(iAnimationIndex);
         }, iAnimationTime);
@@ -84,6 +90,12 @@ function chainAnimations(iGeneratedArray){
         
     }
     displayButton(iAnimationIndex);
+}
+function playNote(letterId, playSound){
+    if(playSound){
+        var note = new Audio("sounds/piano/" + letterId+ ".mp3");
+        note.play();
+    }
 }
 function updateScores(){
     document.getElementById('level').innerHTML = "Level:" + (userLevel + 1);
@@ -138,7 +150,6 @@ function checkInput(userInputNum){
         iRoundIndex++;
         updateScores();
         lightUpCorrect('displayLeft');
-        
         if(iRoundIndex >= iGeneratedArray.length){
             roundPass(); 
         }
@@ -156,7 +167,6 @@ function indicatorUpdate(){
 }
 function openOptions(){
     document.getElementById('wrapper').style.visibility = 'visible';
-    setDarkMode();
 }
 function closeOptions(){
     document.getElementById('wrapper').style.visibility = 'hidden';
@@ -172,6 +182,21 @@ function setDarkMode(){
         document.getElementsByTagName("h1")[0].style.color = "black";
     }
 }
+function setEnableSound(){
+    if(Cookies.get('soundMode') === '1'){
+        document.getElementById('soundEnable').checked = true;
+    }else{
+        document.getElementById('soundEnable').checked = false;
+    }
+}
+function enableSoundClick(){
+    if(document.getElementById('soundEnable').checked) {
+        Cookies.set('soundMode', '1', { expires: 7 });
+    }else{
+        Cookies.set('soundMode', '0', { expires: 7 });
+    }
+    setEnableSound();
+}
 function darkModeClick(){
     if(document.getElementById('darkMode').checked) {
         Cookies.set('darkMode', '1', { expires: 7 });
@@ -181,5 +206,15 @@ function darkModeClick(){
     setDarkMode();
 }
 function loadSettings(){
+    setEnableSound();
     setDarkMode();
+}
+function firstTimeLoad(){
+    if(Cookies.get('loadedBefore') === '1'){
+        loadSettings();
+    }else{
+        Cookies.set('darkMode', '0', { expires: 7 });
+        Cookies.set('soundMode', '1', { expires: 7 });
+        Cookies.set('loadedBefore', '1', { expires: 7 });
+    }
 }
