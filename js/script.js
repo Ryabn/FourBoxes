@@ -64,7 +64,7 @@ function chainAnimations(iGeneratedArray){
     sArrayId = translateNumToId(iGeneratedArray);
     var iAnimationTime = animationTime(sArrayId.length);
     var iAnimationIndex = 0;
-    if(document.getElementById('soundEnable').checked){
+    if(Cookies.get('soundMode') === '1'){
         var playSound = true;
     }else{
         var playSound = false;
