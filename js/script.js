@@ -137,6 +137,20 @@ function roundFail(){
 }
 function uInput(number){
     checkInput((number-1));
+    switch(number) {
+        case 1:
+            playNote('one', true);
+            break;
+        case 2:
+            playNote('two', true);
+            break;
+        case 3:
+            playNote('three', true);
+            break;
+        case 4:
+            playNote('four', true);
+            break;
+    } 
 }
 function lightUpCorrect(divId){
     document.getElementById(divId).style.backgroundColor = "#5aff30";
