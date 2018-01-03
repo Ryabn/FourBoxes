@@ -22,10 +22,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretty-checkbox/3.0.0/pretty-checkbox.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="css/default.css">
         <script src="js/script.js"></script>
     </head>
     <body onload="load()" ontouchstart="">
+        <div id="fb-root"></div>
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -140,7 +151,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="" onclick="closeOptions()"><p>Close</p></a> 
+                            <a href="" onclick="closeOptions()"><p class="closeOptionsTag">Close</p></a> 
                         </div>
                     </div>
                 </div>
@@ -150,44 +161,56 @@
             <div id="finishPage">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="endingScreenHeader">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h3>Final Score</h3>
+                        <div class="col-10 mx-auto">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="endingScreenHeader">
+                                        <h3>Try Again!</h3>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p id="highScore">High Score: </p>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p id="highScore">Best: </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4 ml-auto">
-                            <p>Level: </p>
+                </div>
+                <div class="container">
+                    <div class="importantScoresEnd">
+                        <div class="row">
+                            <div class="col-4 ml-auto">
+                                <p>Level: </p>
+                            </div>
+                            <div class="col-6 mr-auto">
+                                <p id="finalLevelDisplay" class="scores"></p>
+                            </div>
                         </div>
-                        <div class="col-6 mr-auto">
-                            <p id="finalLevelDisplay" class="scores"></p>
+                        <div class="row">
+                            <div class="col-4 ml-auto">
+                                <p>Score: </p>
+                            </div>
+                            <div class="col-6 mr-auto">
+                                <p id="finalScoreDisplay" class="scores"></p>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4 ml-auto">
-                            <p>Score: </p>
-                        </div>
-                        <div class="col-6 mr-auto">
-                            <p id="finalScoreDisplay" class="scores"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mx-auto">
                             <button class="playAgainButton" onclick="closeEndScreen()">
-                                Play Again!
+                                Play Again
                             </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fryabn.github.io%2FFourBoxes%2F&amp;src=sdkpreparse">
+                                <div class="facebookShare">
+                                    <img src="images/FB-f-Logo__white_29.png"/>
+                                    Play With Friends
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

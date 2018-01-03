@@ -254,6 +254,6 @@ function closeEndScreen(){
 function displayFinalScores(){
     document.getElementById('finalScoreDisplay').innerHTML = (userScore);
     document.getElementById('finalLevelDisplay').innerHTML = (userLevel + 1);
-    document.getElementById('highScore').innerHTML = ("High Score: " + iHighScore);
+    document.getElementById('highScore').innerHTML = ("Best: " + iHighScore);
     
 }

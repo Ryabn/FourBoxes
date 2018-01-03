@@ -14,18 +14,14 @@ h2{
 h3{
     text-align: center;
     font-size: 33px;
-    margin-top: 10px;
-    margin-bottom: 0;
 }
 #highScore{
-    font-size: 18px;
     color: grey;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 a{
     text-align: center;
-    color: red;
 }
 .buttonSize{
     border-radius: 5px;
@@ -148,12 +144,25 @@ a{
     width: 100vw;
 }
 .playAgainButton{
+    font-family: 'Roboto', sans-serif;
     background-color: orange;
     border: none;
     border-radius: 5px;
-    height: 70px;
-    width: 220px;
+    height: 50px;
+    width: 260px;
     font-size: 26px;
+    margin-bottom: 10px;
+}
+.facebookShare{
+    color: white;
+    background-color: #3B5998;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 5px;
+    height: 50px;
+    width: 260px;
+    font-size: 22px;
+    padding-top: 8px;
 }
 #finishPage{
     position: fixed;
@@ -163,17 +172,33 @@ a{
     left: 50vw;
     transform: translate(-150px, -200px);
     overflow: auto;
-    background-color: white;
+    background-color: #c6dcff;
     border-radius: 10px;
     border: 5px solid grey;
-    padding: 20px;
     text-align: left;
 }
+
 #finishPage p{
-    font-size: 22px;
+    font-size: 28px;
+}
+.endingScreenHeader{
+    background-color: #e8e8e8;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 .scores{
     text-align: right;
+}
+.closeOptionsTag{
+    color: red;
+}
+.importantScoresEnd{
+    padding-top: 5px;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 @media screen and (min-width: 768px) {
