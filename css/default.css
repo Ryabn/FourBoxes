@@ -11,6 +11,18 @@ h1{
 h2{
     text-align: center;
 }
+h3{
+    text-align: center;
+    font-size: 33px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+#highScore{
+    font-size: 18px;
+    color: grey;
+    text-align: center;
+    margin-bottom: 20px;
+}
 a{
     text-align: center;
     color: red;
@@ -20,6 +32,18 @@ a{
     width: 100%;
     height: 100%;
     border: none;
+}
+#one{
+    background-color: #b2ff89;
+}
+#two{
+    background-color: #fff091;
+}
+#three{
+    background-color: #ff9ec8;
+}
+#four{
+    background-color: #daa8ff;
 }
 #one:active{
     background-color: #6782bc;
@@ -114,18 +138,44 @@ a{
     padding: 20px;
     text-align: left;
 }
-#one{
-    background-color: #b2ff89;
+#endingScreenWrapper{
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,255,0.3);
+    height: 100vh;
+    width: 100vw;
 }
-#two{
-    background-color: #fff091;
+.playAgainButton{
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    height: 70px;
+    width: 220px;
+    font-size: 26px;
 }
-#three{
-    background-color: #ff9ec8;
+#finishPage{
+    position: fixed;
+    width: 300px;
+    height: 400px;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-150px, -200px);
+    overflow: auto;
+    background-color: white;
+    border-radius: 10px;
+    border: 5px solid grey;
+    padding: 20px;
+    text-align: left;
 }
-#four{
-    background-color: #daa8ff;
+#finishPage p{
+    font-size: 22px;
 }
+.scores{
+    text-align: right;
+}
+
 @media screen and (min-width: 768px) {
     .display{
         padding-top: 2vh;

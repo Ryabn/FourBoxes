@@ -20,7 +20,6 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Buttons/2.0.0/css/buttons.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pretty-checkbox/3.0.0/pretty-checkbox.min.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet"> 
         <link rel="stylesheet" type="text/css" href="css/default.css">
@@ -142,6 +141,53 @@
                     <div class="row">
                         <div class="col-12">
                             <a href="" onclick="closeOptions()"><p>Close</p></a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="endingScreenWrapper">
+            <div id="finishPage">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="endingScreenHeader">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h3>Final Score</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p id="highScore">High Score: </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 ml-auto">
+                            <p>Level: </p>
+                        </div>
+                        <div class="col-6 mr-auto">
+                            <p id="finalLevelDisplay" class="scores"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 ml-auto">
+                            <p>Score: </p>
+                        </div>
+                        <div class="col-6 mr-auto">
+                            <p id="finalScoreDisplay" class="scores"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="playAgainButton" onclick="closeEndScreen()">
+                                Play Again!
+                            </button>
                         </div>
                     </div>
                 </div>

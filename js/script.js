@@ -2,6 +2,7 @@ var userInput;
 var iRoundIndex = 0;
 var userLevel = 0;
 var userScore = 0;
+var iHighScore = 0;
 var iGeneratedArray = [];
 var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
@@ -71,6 +72,7 @@ function chainAnimations(iGeneratedArray){
     }
     function displayButton(iAnimationIndex){
         document.getElementById(sArrayId[iAnimationIndex]).style.boxShadow = "0 0 10px red";
+        document.getElementById(sArrayId[iAnimationIndex]).style.backgroundColor = "#6782bc";
         playNote(sArrayId[iAnimationIndex], playSound);
         setTimeout(function(){
             stopButton(iAnimationIndex);
@@ -78,6 +80,7 @@ function chainAnimations(iGeneratedArray){
     }
     function stopButton(iAnimationIndex){
         document.getElementById(sArrayId[iAnimationIndex]).style.boxShadow = "none";
+        document.getElementById(sArrayId[iAnimationIndex]).style.backgroundColor = null;
         setTimeout(function(){
             iAnimationIndex++;
             if(iAnimationIndex < sArrayId.length){
@@ -124,16 +127,16 @@ function roundPass(){
 }
 function roundFail(){
     var indicatorId = document.getElementById('displayLeft');
-    iRoundIndex = 0;
-    userLevel = 0;
-    userScore = 0;
-    updateScores();
     document.getElementById('indicator').innerHTML = "Failed!";
     indicatorId.style.backgroundColor = "#d8002e";
     setTimeout(function(){ 
         indicatorId.style.backgroundColor = "#ededed";
     }, 300);
-    endOfRound();
+    if(userScore > iHighScore){
+        iHighScore = userScore;
+        Cookies.set('highScore', iHighScore, { expires: 7 });
+    }
+    openEndScreen();
 }
 function uInput(number){
     checkInput((number-1));
@@ -224,6 +227,7 @@ function darkModeClick(){
 function loadSettings(){
     setEnableSound();
     setDarkMode();
+    iHighScore = parseInt(Cookies.get('highScore'));
 }
 function firstTimeLoad(){
     if(Cookies.get('loadedBefore') === '1'){
@@ -232,6 +236,24 @@ function firstTimeLoad(){
         Cookies.set('darkMode', '0', { expires: 7 });
         Cookies.set('soundMode', '1', { expires: 7 });
         Cookies.set('loadedBefore', '1', { expires: 7 });
+        Cookies.set('highScore', '0', { expires: 7});
         loadSettings();
     }
+}
+function openEndScreen(){
+    document.getElementById('endingScreenWrapper').style.visibility = 'visible';
+    displayFinalScores();
+}
+function closeEndScreen(){
+    document.getElementById('endingScreenWrapper').style.visibility = 'hidden';
+    userLevel = 0;
+    userScore = 0;
+    updateScores();
+    endOfRound();
+}
+function displayFinalScores(){
+    document.getElementById('finalScoreDisplay').innerHTML = (userScore);
+    document.getElementById('finalLevelDisplay').innerHTML = (userLevel + 1);
+    document.getElementById('highScore').innerHTML = ("High Score: " + iHighScore);
+    
 }
