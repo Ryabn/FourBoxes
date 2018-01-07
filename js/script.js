@@ -3,6 +3,7 @@ var iRoundIndex = 0;
 var userLevel = 0;
 var userScore = 0;
 var iHighScore = 0;
+var soundPack = 'piano';
 var iGeneratedArray = [];
 var gameButtonsId = ['one', 'two', 'three', 'four'];
 var gameButtonsIdLen = gameButtonsId.length;
@@ -96,7 +97,7 @@ function chainAnimations(iGeneratedArray){
 }
 function playNote(letterId, playSound){
     if(playSound){
-        var note = new Audio("sounds/piano/" + letterId + ".mp3");
+        var note = new Audio("sounds/" + soundPack + "/" + letterId + ".mp3");
         note.play();
     }
 }
@@ -208,6 +209,18 @@ function setEnableSound(){
         document.getElementById('soundEnable').checked = false;
     }
 }
+function setSoundPack(){
+    if(Cookies.get('soundPack') === '3'){
+        document.getElementById('soundKeyThree').checked = true;
+        soundPack = 'bigshaq';
+    }else if(Cookies.get('soundPack') === '2'){
+        document.getElementById('soundKeyTwo').checked = true;
+        soundPack = 'drums';
+    }else{
+        document.getElementById('soundKeyOne').checked = true;
+        soundPack = 'piano';
+    }
+}
 function enableSoundClick(){
     if(document.getElementById('soundEnable').checked) {
         Cookies.set('soundMode', '1', { expires: 7 });
@@ -227,6 +240,7 @@ function darkModeClick(){
 function loadSettings(){
     setEnableSound();
     setDarkMode();
+    setSoundPack();
     iHighScore = parseInt(Cookies.get('highScore'));
 }
 function firstTimeLoad(){
@@ -237,6 +251,7 @@ function firstTimeLoad(){
         Cookies.set('soundMode', '1', { expires: 7 });
         Cookies.set('loadedBefore', '1', { expires: 7 });
         Cookies.set('highScore', '0', { expires: 7});
+        Cookies.set('soundPack', '1', { expires: 7});
         loadSettings();
     }
 }
@@ -256,4 +271,17 @@ function displayFinalScores(){
     document.getElementById('finalLevelDisplay').innerHTML = (userLevel + 1);
     document.getElementById('highScore').innerHTML = ("Best: " + iHighScore);
     
+}
+function newSoundPack(buttonNum){
+    switch(buttonNum) {
+        case 1:
+            Cookies.set('soundPack', '1', { expires: 7});
+            break;
+        case 2:
+            Cookies.set('soundPack', '2', { expires: 7});
+            break;
+        case 3:
+            Cookies.set('soundPack', '3', { expires: 7});
+            break;
+    } 
 }
