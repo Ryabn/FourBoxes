@@ -237,24 +237,6 @@ function darkModeClick(){
     }
     setDarkMode();
 }
-function loadSettings(){
-    setEnableSound();
-    setDarkMode();
-    setSoundPack();
-    iHighScore = parseInt(Cookies.get('highScore'));
-}
-function firstTimeLoad(){
-    if(Cookies.get('loadedBefore') === '1'){
-        loadSettings();
-    }else{
-        Cookies.set('darkMode', '0', { expires: 7 });
-        Cookies.set('soundMode', '1', { expires: 7 });
-        Cookies.set('loadedBefore', '1', { expires: 7 });
-        Cookies.set('highScore', '0', { expires: 7});
-        Cookies.set('soundPack', '1', { expires: 7});
-        loadSettings();
-    }
-}
 function openEndScreen(){
     document.getElementById('endingScreenWrapper').style.visibility = 'visible';
     displayFinalScores();
@@ -284,4 +266,22 @@ function newSoundPack(buttonNum){
             Cookies.set('soundPack', '3', { expires: 7});
             break;
     } 
+}
+function loadSettings(){
+    setEnableSound();
+    setDarkMode();
+    setSoundPack();
+    iHighScore = parseInt(Cookies.get('highScore'));
+}
+function firstTimeLoad(){
+    if(Cookies.get('loadedBefore') === '1'){
+        loadSettings();
+    }else{
+        Cookies.set('darkMode', '0', { expires: 7 });
+        Cookies.set('soundMode', '1', { expires: 7 });
+        Cookies.set('loadedBefore', '1', { expires: 7 });
+        Cookies.set('highScore', '0', { expires: 7});
+        Cookies.set('soundPack', '1', { expires: 7});
+        loadSettings();
+    }
 }
